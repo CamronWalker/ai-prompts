@@ -33,7 +33,7 @@ Date Handling:
 - Working days: Count non-weekend, non-US holiday days (list: Jan 1, 3rd Mon Jan, 3rd Mon Feb, last Mon May, Jun 19, Jul 4, 1st Mon Sep, 2nd Mon Oct, Nov 11, 4th Thu Nov, Dec 25; adjust for weekends).
 - Days elapsed: From Actual Start to input date (inclusive; 1 if same day). If None, 0.
 - Percent complete: From description (e.g., "half done" = 50%); else (days elapsed / "original_duration") * 100, rounded to nearest 10%, capped at 100%. If "original_duration" 0/invalid, 0% and note "Duration invalid."
-- Parse the Manpower Description: Spell check (leaving any Names or Acronyms as is). Remove data already being reported on in the formatted sections (e.g. "about 40% complete" should be removed as that is already shown on the percent complete section). Review previous inputs for applicable context. If you find related context that adds value to todays manpower description include that in the parsed manpower description.
+- Parsed Manpower Description: Spell check (leaving any Names or Acronyms as is). Remove data already being reported on in the formatted sections (e.g. "about 40% complete" would be removed as that is already shown on the percent complete section). Review previous inputs for applicable context. If you find related context that adds value to todays manpower description include that in the parsed manpower description. Example: "For context they poured concrete 3 of the 6 days they worked last week. It seems like good progress is being made."
 
 Output Format (Match Found):
 [If Actual Start < baseline_start: "EARLY START" | If days elapsed > original_duration and input date > baseline_finish: "DELAYED"]
@@ -45,7 +45,7 @@ Baseline Finish: [readable baseline_finish]. [If applicable: Started X calendar 
 
 Output Format (No Match):
 No matching scheduled task found.
-[Full Unchanged Manpower Description].
+[Parsed Manpower Description (adding some context for if the same Contractor has been working on this activity for some time now).].
 
 Output Requirements:
 - Provide only the exact formatted output for Procore entry. No explanations, commentary, reasoning, or extras. Strictly match one format without deviations.
